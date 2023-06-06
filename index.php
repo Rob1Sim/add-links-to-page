@@ -79,7 +79,6 @@ function list_all_pages():void{
         $pages_id = $_POST["extranet_pages"];
         $extranet_page = get_page_by_path("link-extranet");
         $page_content = "";
-        $links = get_option("link-extranet");
 
         //Enregistre les id dans la liste des liens
         update_option("link-extranet",$pages_id);
@@ -109,7 +108,7 @@ function list_all_pages():void{
         foreach ($pages as $final_url) {
             if ($final_url->ID != $extranet_page->ID){
                 echo '<tr>';
-                echo '<td class="title column-title"><strong><a href="' . get_permalink($final_url->ID) . '">' . $final_url->post_title.'_'.$final_url->ID . '</a></strong></td>';
+                echo '<td class="title column-title"><strong><a href="' . get_permalink($final_url->ID) . '">' . $final_url->post_title . '</a></strong></td>';
                 echo '<td class="check-column">
                             <input type="checkbox" name="extranet_pages[]"
                             value="' . $final_url->ID. '" '.(in_array($final_url->ID, $links_already_save)?"checked":"").'>
